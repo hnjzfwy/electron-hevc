@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "alex.liang" <alex.liang.t@gmail.com>
+Date: Fri, 31 Jul 2020 13:15:13 +0800
+Subject: enable_hevc_decodec.patch
+
+enable ffmpeg hevc decodec
+
+diff --git a/media/base/supported_types.cc b/media/base/supported_types.cc
+index 19266cf96d85057af9165f4e72721d09ddb16cc0..e2a1c39a4fc04ec43202c2b4da2df4d109b01323 100644
+--- a/media/base/supported_types.cc
++++ b/media/base/supported_types.cc
+@@ -282,6 +282,7 @@ bool IsDefaultSupportedVideoType(const VideoType& type) {
+       return IsColorSpaceSupported(type.color_space) &&
+              IsVp9ProfileSupported(type.profile);
+     case kCodecH264:
++    case kCodecHEVC:
+     case kCodecVP8:
+     case kCodecTheora:
+       return true;
+@@ -289,7 +290,6 @@ bool IsDefaultSupportedVideoType(const VideoType& type) {
+     case kUnknownVideoCodec:
+     case kCodecVC1:
+     case kCodecMPEG2:
+-    case kCodecHEVC:
+     case kCodecDolbyVision:
+       return false;
+ 
+diff --git a/media/media_options.gni b/media/media_options.gni
+index 1d62f7f714a7b753a2ee69cd99f95c8a8cf9ed23..5116e5292377030c14d6a30f07fa77ee15486ad4 100644
+--- a/media/media_options.gni
++++ b/media/media_options.gni
+@@ -74,7 +74,8 @@ declare_args() {
+ 
+   # Enable HEVC/H265 demuxing. Actual decoding must be provided by the
+   # platform. Enabled by default for Chromecast.
+-  enable_platform_hevc = proprietary_codecs && is_chromecast
++  # enable_platform_hevc = proprietary_codecs && is_chromecast
++  enable_platform_hevc = true
+ 
+   # Enable Dolby Vision demuxing. Enable by default for Chromecast. Actual
+   # decoding must be provided by the platform. Note some Dolby Vision profiles
