@@ -5,12 +5,17 @@ Enable hevc/h265 decodec
 https://github.com/electron/build-tools
 
 ```sh
-e init master-testing -i testing --root=~/electron-test
+$ e init master-release -i release --root=~/electron-release
 
-vim $(e show root)/.gclient
+$ vim $(e show root)/.gclient
 - "url": 'https://github.com/electron/electron'  
 + "url": 'https://github.com/AAAhs/electron'
 
-e sync --revision v9.1.2-hevc
-e build
+$ e sync --revision v9.1.2-hevc
+$ e build
+
+# Package
+$ cd $(e show root)/src
+$ electron/script/strip-binaries.py -d out/Release
+$ e build electron:dist
 ```
