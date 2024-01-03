@@ -1,5 +1,5 @@
 {
-  "baseUrl": "https://electron-build-tools.s3-us-west-2.amazonaws.com/build-dependencies",
+  "baseUrl": "https://github.com/hnjzfwy/electron-frameworks",
   "files": [
     {
       "name": "Mantle.zip",
