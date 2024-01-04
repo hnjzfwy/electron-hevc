@@ -43,9 +43,8 @@ def main():
   output_dir = os.path.join(SOURCE_ROOT, 'external_binaries')
   config_hash_path = os.path.join(output_dir, '.hash')
 
-  if("https://github.com/hnjzfwy/electron-frameworks" != base_url):
-    if (not is_updated(config_hash_path) and not args.force):
-      return
+#  if (not is_updated(config_hash_path) and not args.force):
+#    return
 
   rm_rf(output_dir)
   safe_mkdir(output_dir)
@@ -68,8 +67,8 @@ def main():
     if 'sccache' in binary['name']:
       add_exec_bit_to_sccache_binary(output_dir)
 
-  with open(config_hash_path, 'w') as f:
-    f.write(sha256(CONFIG_PATH))
+#  with open(config_hash_path, 'w') as f:
+#    f.write(sha256(CONFIG_PATH))
     
   print("external-binaries over...")
 
