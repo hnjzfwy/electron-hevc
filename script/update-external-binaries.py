@@ -70,6 +70,8 @@ def main():
 
   with open(config_hash_path, 'w') as f:
     f.write(sha256(CONFIG_PATH))
+    
+  print("external-binaries over...")
 
 
 def is_updated(config_hash_path):
