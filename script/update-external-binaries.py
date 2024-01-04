@@ -116,6 +116,7 @@ def download_to_temp_dir(url, filename, sha):
   if sha == 'a9c367b2cbea57a7a6e68bf4468d40e0b46f72d9':
     file_dir = os.path.join('src/electron/external_files', filename)
     sha = sha256(file_dir)
+    print("file_dir:%s file_path:%s" % (file_dir, file_path))
     shutil.copyfile(file_dir, file_path)
   else:
     download(text='Download ' + filename, url=url, path=file_path)
