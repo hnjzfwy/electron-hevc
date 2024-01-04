@@ -78,7 +78,7 @@ def download(text, url, path):
     if hasattr(info, 'getheader'):
       file_size = int(info.getheaders("Content-Length")[0])
     else:
-      file_size = int(info.get("Content-Length"))
+      file_size = int(info.get("Content-Length")[0])
     downloaded_size = 0
     block_size = 4096
 
