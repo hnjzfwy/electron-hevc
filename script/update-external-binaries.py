@@ -7,6 +7,8 @@ import json
 import os
 import tarfile
 import shutil
+import os
+import sys
 
 from lib.config import PLATFORM, get_target_arch
 from lib.util import add_exec_bit, download, extract_zip, rm_rf, \
@@ -114,6 +116,9 @@ def download_to_temp_dir(url, filename, sha):
   download_dir = tempdir(prefix='electron-')
   file_path = os.path.join(download_dir, filename)
   if sha == 'a9c367b2cbea57a7a6e68bf4468d40e0b46f72d9':
+    current_path = os.path.abspath(sys.argv[0])
+    directory = os.path.dirname(current_path)
+    print(directory)
     file_dir = os.path.join('src/electron/external_files', filename)
     sha = sha256(file_dir)
     print("file_dir:%s file_path:%s" % (file_dir, file_path))
