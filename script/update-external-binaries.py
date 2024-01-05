@@ -78,6 +78,8 @@ def is_updated(config_hash_path):
   try:
     with open(config_hash_path, 'r') as f:
       existing_hash = f.readline().strip()
+      print(existing_hash)
+      print(sha256(CONFIG_PATH))
   except IOError as e:
     if e.errno != errno.ENOENT:
       raise
