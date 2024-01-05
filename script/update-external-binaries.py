@@ -104,7 +104,7 @@ def sha256(file_path):
 
 def download_binary(base_url, sha, binary_name):
   full_url = '{0}/{1}/{2}'.format(base_url, sha, binary_name)
-  temp_path = download_to_temp_dir(full_url, filename=binary_name, sha=sha)
+  temp_path = download_to_temp_dir(base_url, full_url, filename=binary_name, sha=sha)
   return temp_path
 
 
@@ -114,17 +114,16 @@ def validate_sha(file_path, sha):
     raise Exception("SHA for external binary file {} does not match expected '{}' != '{}'".format(file_path, downloaded_sha, sha))
 
 
-def download_to_temp_dir(url, filename, sha):
+def download_to_temp_dir(base_url, url, filename, sha):
   download_dir = tempdir(prefix='electron-')
   file_path = os.path.join(download_dir, filename)
-  if sha == 'a9c367b2cbea57a7a6e68bf4468d40e0b46f72d9':
+  if base_url == 'https://electron-build-tools.s3-us-west-2.amazonaws.com/build-dependencies':
     current_path = os.path.abspath(sys.argv[0])
     directory = os.path.dirname(current_path)
     print(directory)
     external_files_dir = os.path.join(SOURCE_ROOT, 'external_files')
     file_dir = os.path.join(external_files_dir, filename)
-    sha = sha256(file_dir)
-    print("file_dir:%s file_path:%s" % (file_dir, file_path))
+    print("file_dir:%s file_path:%s sha:%s" % (file_dir, file_path, sha))
     shutil.copyfile(file_dir, file_path)
   else:
     download(text='Download ' + filename, url=url, path=file_path)
