@@ -17,11 +17,6 @@ index 165551a2948b74c024459be42d1a9a3d96878a10..45be431c4f36d6068148646a8cf8cb8f
 +SRC_DIR = os.path.dirname(os.path.dirname(os.path.dirname(SCRIPT_DIR)))
 +SYSTOORS_CONFIG_DIR = os.path.join(SRC_DIR, 'electron', 'script')
  
--URL_PREFIX = 'https://commondatastorage.googleapis.com'
--URL_PATH = 'chrome-linux-sysroot/toolchain'
-+URL_PREFIX = 'http://s3.amazonaws.com'
-+URL_PATH = 'electronjs-sysroots/toolchain'
- 
  VALID_ARCHS = ('arm', 'arm64', 'i386', 'amd64', 'mips', 'mips64el')
  
 @@ -103,7 +105,7 @@ def GetSysrootDict(target_platform, target_arch):
