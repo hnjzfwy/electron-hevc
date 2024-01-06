@@ -20,7 +20,7 @@
         "Tarball": "debian_sid_armel_sysroot.tar.xz"
     },
     "sid_i386": {
-        "Sha1Sum": "05de3c25f3ea30871b63b55d3598d59f07910b58",
+        "Sha1Sum": "9e6279438ece6fb42b5333ca90d5e9d0c188a403",
         "SysrootDir": "debian_sid_i386-sysroot",
         "Tarball": "debian_sid_i386_sysroot.tar.xz"
     },
