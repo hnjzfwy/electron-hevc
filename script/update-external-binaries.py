@@ -43,7 +43,7 @@ def main():
   output_dir = os.path.join(SOURCE_ROOT, 'external_binaries')
   config_hash_path = os.path.join(output_dir, '.hash')
   is_update = is_updated(config_hash_path)
-  print("is_update:%s force:%s" %s (is_update, args.force))
+  print("is_update:%s force:%s" % (is_update, args.force))
   if (not is_updated(config_hash_path) and not args.force):
     return
 
